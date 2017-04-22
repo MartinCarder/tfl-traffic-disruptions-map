@@ -4,6 +4,12 @@ import styles from './googleMaps.scss';
 let mapLoaded;
 
 class GoogleMaps extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      mapReady: false,
+    };
+  }
   componentDidMount() {
     if (!mapLoaded) {
       mapLoaded = new Promise((resolve) => {
@@ -20,6 +26,8 @@ class GoogleMaps extends React.Component {
         center: { lat: 51.509865, lng: -0.118092 },
         zoom: 11,
       });
+
+      this.setState({ mapReady: false });
     });
   }
   render() {

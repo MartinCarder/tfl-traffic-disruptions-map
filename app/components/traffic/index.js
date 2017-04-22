@@ -16,7 +16,6 @@ class Traffic extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <GoogleMaps />
@@ -25,6 +24,21 @@ class Traffic extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  const { trafficData } = state
+  const {
+    isFetching,
+    isError,
+    data,
+  } = trafficData;
+
+  return {
+    isFetching,
+    isError,
+    data,
+  };
+};
+
 Traffic.propTypes = propTypes;
 
-export default connect()(Traffic);
+export default connect(mapStateToProps)(Traffic);
