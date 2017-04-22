@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
+
 import {
   FETCH_TRAFFIC_REQUEST,
   FETCH_TRAFFIC_FAILURE,
   FETCH_TRAFFIC_SUCCESS,
-} from '../actions/actions';
+} from '../actions/';
 
 const trafficData = (state = {
   isFetching: false,
@@ -16,17 +17,20 @@ const trafficData = (state = {
         isFetching: true,
         isError: false,
       });
+
     case FETCH_TRAFFIC_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
         isError: true,
       });
+
     case FETCH_TRAFFIC_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
         isError: false,
         data: action.data,
       });
+
     default:
       return state;
   }

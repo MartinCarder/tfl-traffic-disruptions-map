@@ -1,13 +1,15 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import configureStore from '../stores/';
 
-class Root extends React.Component {
-  render() {
-    return (
-      <div>
-        root
-      </div>
-    );
-  }
-}
+import Traffic from './traffic/'
+
+const store = configureStore();
+
+const Root = () => (
+  <Provider store={store}>
+    <Traffic />
+  </Provider>
+);
 
 export default Root;
