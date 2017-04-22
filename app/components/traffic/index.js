@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchTraffic } from '../../actions/';
 
+import GoogleMaps from './GoogleMaps';
+
 const propTypes = {
   dispatch: React.PropTypes.func.isRequired,
 };
@@ -17,7 +19,7 @@ class Traffic extends React.Component {
     console.log(this.props)
     return (
       <div>
-        traffic
+        <GoogleMaps />
       </div>
     );
   }
