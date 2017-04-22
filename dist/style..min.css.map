@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./app/styles/main.scss"],"names":[],"mappings":"AAAA,KAGI,gCAAoC","file":"style..min.css","sourcesContent":[":global {\n  @import './typography';\n  body {\n    font-family: 'Quicksand', sans-serif;\n  }\n}\n\n\n\n// WEBPACK FOOTER //\n// ./app/styles/main.scss"],"sourceRoot":""}
