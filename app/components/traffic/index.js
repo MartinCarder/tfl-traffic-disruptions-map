@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import { fetchTraffic, openInfoWindow } from '../../actions/';
 
@@ -7,10 +9,10 @@ import Loading from './Loading';
 import MapPin from '../googleMaps/MapPin';
 
 const propTypes = {
-  data: React.PropTypes.array.isRequired,
-  dispatch: React.PropTypes.func.isRequired,
-  isError: React.PropTypes.bool.isRequired,
-  isFetching: React.PropTypes.bool.isRequired,
+  data: PropTypes.array.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  isError: PropTypes.bool.isRequired,
+  isFetching: PropTypes.bool.isRequired,
 };
 
 class Traffic extends React.Component {

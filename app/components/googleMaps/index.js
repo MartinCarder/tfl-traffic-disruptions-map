@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './index.scss';
 
 import InfoWindow from './InfoWindow';
@@ -6,11 +7,11 @@ import InfoWindow from './InfoWindow';
 let mapLoaded;
 
 const propTypes = {
-  children: React.PropTypes.node.isRequired,
-  lat: React.PropTypes.number.isRequired,
-  lng: React.PropTypes.number.isRequired,
-  mapKey: React.PropTypes.string.isRequired,
-  zoom: React.PropTypes.number.isRequired,
+  children: PropTypes.node.isRequired,
+  lat: PropTypes.number.isRequired,
+  lng: PropTypes.number.isRequired,
+  mapKey: PropTypes.string.isRequired,
+  zoom: PropTypes.number.isRequired,
 };
 
 class GoogleMaps extends React.Component {

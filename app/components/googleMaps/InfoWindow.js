@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { closeInfoWindow } from '../../actions/';
 
 const propTypes = {
-  content: React.PropTypes.string.isRequired,
-  dispatch: React.PropTypes.func.isRequired,
-  mapRef: React.PropTypes.object.isRequired,
-  pin: React.PropTypes.object,
-  open: React.PropTypes.bool.isRequired,
+  content: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  mapRef: PropTypes.object.isRequired,
+  open: PropTypes.bool.isRequired,
+  pin: PropTypes.object,
 };
 
 const defaultProps = {

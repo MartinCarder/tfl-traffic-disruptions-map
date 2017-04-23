@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const propTypes = {
-  mapRef: React.PropTypes.object,
-  lat: React.PropTypes.number.isRequired,
-  lng: React.PropTypes.number.isRequired,
-  pinCallback: React.PropTypes.func.isRequired,
-  popupMarkup: React.PropTypes.string.isRequired,
+  lat: PropTypes.number.isRequired,
+  lng: PropTypes.number.isRequired,
+  mapRef: PropTypes.object,
+  pinCallback: PropTypes.func.isRequired,
+  popupMarkup: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
