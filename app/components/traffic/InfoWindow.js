@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { closeInfoWindow } from '../../actions/';
 
 const propTypes = {
   content: React.PropTypes.string.isRequired,
+  dispatch: React.PropTypes.func.isRequired,
   mapRef: React.PropTypes.object,
   pin: React.PropTypes.object,
   open: React.PropTypes.bool.isRequired,
@@ -10,9 +12,12 @@ const propTypes = {
 
 class InfoWindow extends React.Component {
   componentDidMount() {
+    this.closeEvent = this.closeEvent.bind(this);
     this.infoWindow = new window.google.maps.InfoWindow({
       content: '',
     });
+
+    window.google.maps.event.addListener(this.infoWindow, 'closeclick', this.closeEvent);
   }
 
   componentDidUpdate(prevProps) {
@@ -20,6 +25,11 @@ class InfoWindow extends React.Component {
     if (open !== prevProps.open || content !== prevProps.content) {
       this.updateWindow();
     }
+  }
+
+  closeEvent() {
+    const { dispatch } = this.props;
+    dispatch(closeInfoWindow());
   }
 
   updateWindow() {
@@ -42,14 +52,12 @@ const mapStateToProps = (state) => {
   const { infoWindow } = state;
   const {
     content,
-    mapRef,
     open,
     pin,
   } = infoWindow;
 
   return {
     content,
-    mapRef,
     open,
     pin,
   };
