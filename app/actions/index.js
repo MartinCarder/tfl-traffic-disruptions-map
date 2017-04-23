@@ -38,6 +38,9 @@ export const fetchTraffic = () => {
           const disruptions = result.Root.Disruptions.Disruption;
           dispatch(fetchTrafficSuccess(disruptions));
         });
+      })
+      .catch(() => {
+        dispatch(fetchTrafficFailure());
       });
   };
 };
