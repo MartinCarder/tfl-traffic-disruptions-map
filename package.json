@@ -16,7 +16,8 @@
     "react-redux": "^5.0.4",
     "redux-logger": "^3.0.1",
     "redux-thunk": "^2.2.0",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "xml2js": "^0.4.17"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
@@ -44,8 +45,7 @@
     "url-loader": "^0.5.8",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2",
-    "webpack-merge": "^4.1.0",
-    "xml2js": "^0.4.17"
+    "webpack-merge": "^4.1.0"
   },
   "scripts": {
     "start": "webpack-dev-server --open --hot --inline",
