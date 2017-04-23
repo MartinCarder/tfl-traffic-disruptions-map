@@ -1,5 +1,10 @@
 :global {
   @import './typography';
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
   body {
     font-family: 'Quicksand', sans-serif;
   }
