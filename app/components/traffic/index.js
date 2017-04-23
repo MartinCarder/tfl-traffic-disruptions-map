@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchTraffic, openInfoWindow } from '../../actions/';
 
 import GoogleMaps from './GoogleMaps';
+import Loading from './Loading';
 import MapPin from './MapPin';
 
 const propTypes = {
@@ -24,6 +25,8 @@ class Traffic extends React.Component {
   }
 
   render() {
+    const { isFetching, isError } = this.props;
+
     return (
       <div>
         <GoogleMaps>
@@ -40,8 +43,8 @@ class Traffic extends React.Component {
               return (
                 <MapPin
                   key={id}
-                  lat={parseFloat(cordinates[1])}
-                  lng={parseFloat(cordinates[0])}
+                  lat={parseFloat(cordinates[1] || 0)}
+                  lng={parseFloat(cordinates[0] || 0)}
                   popupMarkup={info}
                   pinCallback={this.pinCallback}
                 />
@@ -50,6 +53,7 @@ class Traffic extends React.Component {
             )
           }
         </GoogleMaps>
+        <Loading isFetching={isFetching} isError={isError} />
       </div>
     );
   }
