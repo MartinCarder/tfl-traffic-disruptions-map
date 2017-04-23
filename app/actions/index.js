@@ -4,6 +4,8 @@ export const FETCH_TRAFFIC = 'FETCH_TRAFFIC';
 export const FETCH_TRAFFIC_REQUEST = 'FETCH_TRAFFIC_REQUEST';
 export const FETCH_TRAFFIC_FAILURE = 'FETCH_TRAFFIC_FAILURE';
 export const FETCH_TRAFFIC_SUCCESS = 'FETCH_TRAFFIC_SUCCESS';
+export const CLOSE_INFO_WINDOW = 'CLOSE_INFO_WINDOW';
+export const OPEN_INFO_WINDOW = 'OPEN_INFO_WINDOW';
 
 export const fetchTrafficRequest = () => {
   return {
@@ -37,5 +39,19 @@ export const fetchTraffic = () => {
           dispatch(fetchTrafficSuccess(disruptions));
         });
       });
+  };
+};
+
+export const closeInfoWindow = (data) => {
+  return {
+    type: CLOSE_INFO_WINDOW,
+    data,
+  };
+};
+
+export const openInfoWindow = (data) => {
+  return {
+    type: OPEN_INFO_WINDOW,
+    data,
   };
 };
