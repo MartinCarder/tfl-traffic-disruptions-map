@@ -2,8 +2,8 @@ import React from 'react';
 
 const propTypes = {
   mapRef: React.PropTypes.object,
-  lat: React.PropTypes.string.isRequired,
-  lng: React.PropTypes.string.isRequired,
+  lat: React.PropTypes.number.isRequired,
+  lng: React.PropTypes.number.isRequired,
 };
 
 class MapPin extends React.Component {
