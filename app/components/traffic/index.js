@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchTraffic, openInfoWindow } from '../../actions/';
 
-import GoogleMaps from './GoogleMaps';
+import GoogleMaps from '../googleMaps/';
 import Loading from './Loading';
-import MapPin from './MapPin';
+import MapPin from '../googleMaps/MapPin';
 
 const propTypes = {
   data: React.PropTypes.array.isRequired,
