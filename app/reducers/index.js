@@ -40,7 +40,6 @@ const trafficData = (state = {
 
 const infoWindow = (state = {
   content: '',
-  mapRef: undefined,
   open: false,
   pin: undefined,
 }, action) => {
@@ -49,7 +48,6 @@ const infoWindow = (state = {
     case CLOSE_INFO_WINDOW:
       return Object.assign({}, state, {
         content: '',
-        mapRef: undefined,
         open: false,
         pin: undefined,
       });
@@ -57,7 +55,6 @@ const infoWindow = (state = {
     case OPEN_INFO_WINDOW:
       return Object.assign({}, state, {
         content: action.data.content,
-        mapRef: action.data.mapRef,
         open: true,
         pin: action.data.pin,
       });

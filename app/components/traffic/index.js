@@ -18,9 +18,9 @@ class Traffic extends React.Component {
     dispatch(fetchTraffic());
   }
 
-  pinCallback(pin, content, mapRef) {
+  pinCallback(pin, content) {
     const { dispatch } = this.props;
-    dispatch(openInfoWindow({ pin, content, mapRef }));
+    dispatch(openInfoWindow({ pin, content }));
   }
 
   render() {

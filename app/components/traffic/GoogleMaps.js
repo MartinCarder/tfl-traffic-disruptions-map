@@ -60,7 +60,7 @@ class GoogleMaps extends React.Component {
         {this.buildPins()}
         {
           this.state.mapReady &&
-          <InfoWindow />
+          <InfoWindow mapRef={this.map} />
         }
       </div>
     );
