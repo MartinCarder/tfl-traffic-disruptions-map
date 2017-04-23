@@ -8,6 +8,10 @@ const propTypes = {
   popupMarkup: React.PropTypes.string.isRequired,
 };
 
+const defaultProps = {
+  mapRef: {},
+};
+
 class MapPin extends React.Component {
   componentDidMount() {
     this.pinClick = this.pinClick.bind(this);
@@ -49,5 +53,6 @@ class MapPin extends React.Component {
 }
 
 MapPin.propTypes = propTypes;
+MapPin.defaultProps = defaultProps;
 
 export default MapPin;

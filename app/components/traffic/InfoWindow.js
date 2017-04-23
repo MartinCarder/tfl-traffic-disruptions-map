@@ -5,9 +5,13 @@ import { closeInfoWindow } from '../../actions/';
 const propTypes = {
   content: React.PropTypes.string.isRequired,
   dispatch: React.PropTypes.func.isRequired,
-  mapRef: React.PropTypes.object,
+  mapRef: React.PropTypes.object.isRequired,
   pin: React.PropTypes.object,
   open: React.PropTypes.bool.isRequired,
+};
+
+const defaultProps = {
+  pin: {},
 };
 
 class InfoWindow extends React.Component {
@@ -64,5 +68,6 @@ const mapStateToProps = (state) => {
 };
 
 InfoWindow.propTypes = propTypes;
+InfoWindow.defaultProps = defaultProps;
 
 export default connect(mapStateToProps)(InfoWindow);

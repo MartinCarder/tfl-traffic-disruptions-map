@@ -31,6 +31,7 @@ class GoogleMaps extends React.Component {
         scriptTag.src = `https://maps.googleapis.com/maps/api/js?key=${mapKey}&callback=initMap`;
         const firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
+
         window.initMap = () => resolve(window.google);
       });
     }

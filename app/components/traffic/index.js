@@ -9,6 +9,8 @@ import MapPin from './MapPin';
 const propTypes = {
   data: React.PropTypes.array.isRequired,
   dispatch: React.PropTypes.func.isRequired,
+  isError: React.PropTypes.bool.isRequired,
+  isFetching: React.PropTypes.bool.isRequired,
 };
 
 class Traffic extends React.Component {
@@ -32,6 +34,7 @@ class Traffic extends React.Component {
 
         const id = item.$.id;
         const currentUpdate = item.currentUpdate ? `<p>${item.currentUpdate}</p>` : '';
+
         const info = `<div class="map-content">
           <h1 class="map-header">${item.severity}</h1>
           <p>${item.comments}</p>
