@@ -7,6 +7,10 @@ let mapLoaded;
 
 const propTypes = {
   children: React.PropTypes.node.isRequired,
+  lat: React.PropTypes.number.isRequired,
+  lng: React.PropTypes.number.isRequired,
+  mapKey: React.PropTypes.string.isRequired,
+  zoom: React.PropTypes.number.isRequired,
 };
 
 class GoogleMaps extends React.Component {
@@ -19,10 +23,12 @@ class GoogleMaps extends React.Component {
   }
 
   componentDidMount() {
+    const { lat, lng, mapKey, zoom } = this.props;
+
     if (!mapLoaded) {
       mapLoaded = new Promise((resolve) => {
         const scriptTag = document.createElement('script');
-        scriptTag.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBczGXeXKsuc0IrHbcfVjkJYuEsPRdbxyM&callback=initMap';
+        scriptTag.src = `https://maps.googleapis.com/maps/api/js?key=${mapKey}&callback=initMap`;
         const firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
         window.initMap = () => resolve(window.google);
@@ -31,8 +37,8 @@ class GoogleMaps extends React.Component {
 
     mapLoaded.then((maps) => {
       this.map = new maps.maps.Map(this.mapRef, {
-        center: { lat: 51.509865, lng: -0.118092 },
-        zoom: 11,
+        center: { lat, lng },
+        zoom,
       });
 
       this.setState({ mapReady: true });

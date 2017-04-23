@@ -24,34 +24,46 @@ class Traffic extends React.Component {
     dispatch(openInfoWindow({ pin, content }));
   }
 
+  buildPins() {
+    return (
+      this.props.data.map((item) => {
+        const cordinates = item.CauseArea.DisplayPoint.Point.coordinatesLL
+          ? item.CauseArea.DisplayPoint.Point.coordinatesLL.split(',') : [];
+
+        const id = item.$.id;
+        const currentUpdate = item.currentUpdate ? `<p>${item.currentUpdate}</p>` : '';
+        const info = `<div class="map-content">
+          <h1 class="map-header">${item.severity}</h1>
+          <p>${item.comments}</p>
+          ${currentUpdate}
+        </div>`;
+
+        return (
+          <MapPin
+            key={id}
+            lat={parseFloat(cordinates[1])}
+            lng={parseFloat(cordinates[0])}
+            popupMarkup={info}
+            pinCallback={this.pinCallback}
+          />
+        );
+      },
+      )
+    );
+  }
+
   render() {
     const { isFetching, isError } = this.props;
 
     return (
       <div>
-        <GoogleMaps>
-          {
-            this.props.data.map((item) => {
-              const cordinates = item.CauseArea.DisplayPoint.Point.coordinatesLL.split(',');
-              const id = item.$.id;
-              const info = `<div class="map-content">
-                <h1 class="map-header">${item.severity}</h1>
-                <p>${item.comments}</p>
-                <p>${item.currentUpdate}</p>
-              </div>`;
-
-              return (
-                <MapPin
-                  key={id}
-                  lat={parseFloat(cordinates[1] || 0)}
-                  lng={parseFloat(cordinates[0] || 0)}
-                  popupMarkup={info}
-                  pinCallback={this.pinCallback}
-                />
-              );
-            },
-            )
-          }
+        <GoogleMaps
+          mapKey="AIzaSyBczGXeXKsuc0IrHbcfVjkJYuEsPRdbxyM"
+          lng={-0.118092}
+          lat={51.509865}
+          zoom={11}
+        >
+          { this.buildPins() }
         </GoogleMaps>
         <Loading isFetching={isFetching} isError={isError} />
       </div>
