@@ -11,7 +11,7 @@ const paths = {
 
 const common = merge(
   {
-    entry: paths.app,
+    entry: ["babel-polyfill", paths.app],
     output: {
       filename: 'app.min.js',
       path: paths.dist,

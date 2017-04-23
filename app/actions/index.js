@@ -1,3 +1,4 @@
+import 'whatwg-fetch';
 import { parseString } from 'xml2js';
 
 export const FETCH_TRAFFIC = 'FETCH_TRAFFIC';
