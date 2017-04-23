@@ -29,8 +29,8 @@ class Traffic extends React.Component {
               return (
                 <MapPin
                   key={id}
-                  lat={cordinates[1]}
-                  lng={cordinates[0]}
+                  lat={parseFloat(cordinates[1])}
+                  lng={parseFloat(cordinates[0])}
                 />
               );
             },
