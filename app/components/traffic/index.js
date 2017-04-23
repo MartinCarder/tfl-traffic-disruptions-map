@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchTraffic } from '../../actions/';
+import { fetchTraffic, openInfoWindow } from '../../actions/';
 
 import GoogleMaps from './GoogleMaps';
 import MapPin from './MapPin';
@@ -13,8 +13,14 @@ const propTypes = {
 class Traffic extends React.Component {
 
   componentDidMount() {
+    this.pinCallback = this.pinCallback.bind(this);
     const { dispatch } = this.props;
     dispatch(fetchTraffic());
+  }
+
+  pinCallback(pin, content, mapRef) {
+    const { dispatch } = this.props;
+    dispatch(openInfoWindow({ pin, content, mapRef }));
   }
 
   render() {
@@ -27,8 +33,8 @@ class Traffic extends React.Component {
               const id = item.$.id;
               const info = `<div class="map-content">
                 <h1 class="map-header">${item.severity}</h1>
-                <p>${item.corridor}</p>
                 <p>${item.comments}</p>
+                <p>${item.currentUpdate}</p>
               </div>`;
 
               return (
@@ -37,6 +43,7 @@ class Traffic extends React.Component {
                   lat={parseFloat(cordinates[1])}
                   lng={parseFloat(cordinates[0])}
                   popupMarkup={info}
+                  pinCallback={this.pinCallback}
                 />
               );
             },

@@ -8,6 +8,7 @@ const propTypes = {
 
 class MapPin extends React.Component {
   componentDidMount() {
+    this.pinClick = this.pinClick.bind(this);
     this.addPin();
   }
 
@@ -17,6 +18,13 @@ class MapPin extends React.Component {
       position: { lat, lng },
       map: mapRef,
     });
+
+    this.marker.addListener('click', this.pinClick);
+  }
+
+  pinClick() {
+    const { pinCallback, popupMarkup, mapRef } = this.props;
+    pinCallback(this.marker, popupMarkup, mapRef);
   }
 
   render() {

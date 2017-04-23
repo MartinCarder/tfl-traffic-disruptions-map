@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './googleMaps.scss';
 
+import InfoWindow from './InfoWindow';
+
 let mapLoaded;
 
 const propTypes = {
@@ -10,6 +12,7 @@ const propTypes = {
 class GoogleMaps extends React.Component {
   constructor() {
     super();
+
     this.state = {
       mapReady: false,
     };
@@ -55,6 +58,10 @@ class GoogleMaps extends React.Component {
     return (
       <div className={styles.map} ref={(ref) => { this.mapRef = ref; }}>
         {this.buildPins()}
+        {
+          this.state.mapReady &&
+          <InfoWindow />
+        }
       </div>
     );
   }
