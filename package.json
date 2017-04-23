@@ -1,5 +1,5 @@
 {
-  "name": "/tfl-traffic-disruptions-map",
+  "name": "tfl-traffic-disruptions-map",
   "version": "1.0.0",
   "description": "TFL Traffic Disruptions TIMS feed displayed on google maps",
   "main": "index.js",
