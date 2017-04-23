@@ -3,6 +3,10 @@ import styles from './googleMaps.scss';
 
 let mapLoaded;
 
+const propTypes = {
+  children: React.PropTypes.node.isRequired,
+};
+
 class GoogleMaps extends React.Component {
   constructor() {
     super();
@@ -10,6 +14,7 @@ class GoogleMaps extends React.Component {
       mapReady: false,
     };
   }
+
   componentDidMount() {
     if (!mapLoaded) {
       mapLoaded = new Promise((resolve) => {
@@ -27,14 +32,34 @@ class GoogleMaps extends React.Component {
         zoom: 11,
       });
 
-      this.setState({ mapReady: false });
+      this.setState({ mapReady: true });
     });
   }
+
+  buildPins() {
+    const { children } = this.props;
+    let markup = null;
+
+    if (children && this.state.mapReady) {
+      markup = React.Children.map(children, (child) => {
+        return React.cloneElement(child, {
+          mapRef: this.map,
+        });
+      });
+    }
+
+    return markup;
+  }
+
   render() {
     return (
-      <div className={styles.map} ref={(ref) => { this.mapRef = ref; }} />
+      <div className={styles.map} ref={(ref) => { this.mapRef = ref; }}>
+        {this.buildPins()}
+      </div>
     );
   }
 }
+
+GoogleMaps.propTypes = propTypes;
 
 export default GoogleMaps;

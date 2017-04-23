@@ -1,7 +1,7 @@
 import React from 'react';
 
 const propTypes = {
-  map: React.PropTypes.object.isRequired,
+  mapRef: React.PropTypes.object,
   lat: React.PropTypes.string.isRequired,
   lng: React.PropTypes.string.isRequired,
 };
@@ -12,10 +12,10 @@ class MapPin extends React.Component {
   }
 
   addPin() {
-    const { map, lng, lat } = this.props;
+    const { mapRef, lng, lat } = this.props;
     this.marker = new window.google.maps.Marker({
       position: { lat, lng },
-      map,
+      map: mapRef,
     });
   }
 
